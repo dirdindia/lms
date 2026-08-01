@@ -1,9 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { 
-  LayoutDashboard, Users, Settings, ChevronLeft, ChevronRight, X, 
-  BookOpen, Video, Bot, CreditCard, BarChart3, 
-  FileQuestion, Award, MessageSquare, LifeBuoy, Megaphone,
-  Calendar as CalendarIcon, LogOut, ClipboardList
+  LayoutDashboard, Settings, ChevronLeft, ChevronRight, X, 
+  BookOpen, Video, FileQuestion, Award, LogOut, Users, LifeBuoy, Bot, Radio
 } from "lucide-react";
 
 export default function Sidebar({ isMobileOpen, setIsMobileOpen, isCollapsed, setIsCollapsed }) {
@@ -14,38 +12,33 @@ export default function Sidebar({ isMobileOpen, setIsMobileOpen, isCollapsed, se
       title: "Overview",
       links: [
         { to: "/", label: "Dashboard", icon: LayoutDashboard },
-        { to: "/calendar", label: "Calendar", icon: CalendarIcon },
-        { to: "/reports", label: "Analytics", icon: BarChart3 },
       ]
     },
     {
-      title: "Academics",
+      title: "Learning",
       links: [
-        { to: "/courses", label: "Courses", icon: BookOpen },
+        { to: "/my-courses", label: "My Courses", icon: BookOpen },
         { to: "/live-classes", label: "Live Classes", icon: Video },
         { to: "/assessments", label: "Assessments", icon: FileQuestion },
+      ]
+    },
+    {
+      title: "Achievements",
+      links: [
         { to: "/certificates", label: "Certificates", icon: Award },
       ]
     },
     {
-      title: "Users & Support",
+      title: "Support & Mentorship",
       links: [
-        { to: "/users", label: "Users & Roles", icon: Users },
-        { to: "/registration-requests", label: "Requests", icon: ClipboardList },
-        { to: "/ai-tutor", label: "AI Tutor", icon: Bot },
-        { to: "/community", label: "Community", icon: MessageSquare },
-        { to: "/helpdesk", label: "Helpdesk", icon: LifeBuoy },
+        { to: "/live-mentors", label: "Live Teachers", icon: Radio },
+        { to: "/mentorship", label: "Book Mentorship", icon: Users },
+        { to: "/ai-tutor", label: "24/7 AI Tutor", icon: Bot },
+        { to: "/support", label: "Helpdesk", icon: LifeBuoy },
       ]
     },
     {
-      title: "Sales & Marketing",
-      links: [
-        { to: "/payments", label: "Payments", icon: CreditCard },
-        { to: "/marketing", label: "Marketing", icon: Megaphone },
-      ]
-    },
-    {
-      title: "System",
+      title: "Account",
       links: [
         { to: "/settings", label: "Settings", icon: Settings },
       ]
@@ -61,7 +54,7 @@ export default function Sidebar({ isMobileOpen, setIsMobileOpen, isCollapsed, se
       <div className={`flex h-16 shrink-0 items-center border-b border-border ${isCollapsed ? 'justify-center px-0' : 'justify-between px-4'}`}>
         {!isCollapsed && (
           <span className="font-display text-lg font-semibold text-brand-deep truncate ml-2">
-            NMS Admin
+            Student Portal
           </span>
         )}
         

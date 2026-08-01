@@ -10,6 +10,7 @@ import LiveClasses from "./pages/LiveClasses";
 import Assessments from "./pages/Assessments";
 import Certificates from "./pages/Certificates";
 import Users from "./pages/Users";
+import RegistrationRequests from "./pages/RegistrationRequests";
 import AITutor from "./pages/AITutor";
 import Community from "./pages/Community";
 import Helpdesk from "./pages/Helpdesk";
@@ -30,6 +31,7 @@ function App() {
           <Route path="assessments" element={<Assessments />} />
           <Route path="certificates" element={<Certificates />} />
           <Route path="users" element={<Users />} />
+          <Route path="registration-requests" element={<RegistrationRequests />} />
           <Route path="ai-tutor" element={<AITutor />} />
           <Route path="community" element={<Community />} />
           <Route path="helpdesk" element={<Helpdesk />} />
