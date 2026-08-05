@@ -119,16 +119,16 @@ export default function Home() {
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link
-                to="/live-tutoring"
+                to="/register"
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-brand px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-lift transition-transform hover:-translate-y-0.5 cursor-pointer"
               >
-                Start Free Session <ArrowRight className="h-4 w-4" />
+                Register Now <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
-                to="/ai-tutor"
+                to="/live-tutoring"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-brand/25 bg-background px-7 py-3.5 text-sm font-semibold text-brand-deep transition-colors hover:bg-secondary cursor-pointer"
               >
-                Explore AI Tutor
+                Start Free Session
               </Link>
             </div>
             <div className="mt-10 flex items-center gap-3 text-sm text-muted-foreground">

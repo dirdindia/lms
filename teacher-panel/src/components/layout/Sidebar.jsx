@@ -1,7 +1,8 @@
 import { Link, useLocation } from "react-router-dom";
 import { 
   LayoutDashboard, Settings, ChevronLeft, ChevronRight, X, 
-  BookOpen, Video, FileQuestion, Award, LogOut, Users, LifeBuoy, Bot, Radio, ShoppingCart
+  BookOpen, Video, FileQuestion, Award, LogOut, Users, LifeBuoy, Bot, Radio,
+  Calendar, PlayCircle, CalendarHeart, HeadphonesIcon
 } from "lucide-react";
 
 export default function Sidebar({ isMobileOpen, setIsMobileOpen, isCollapsed, setIsCollapsed }) {
@@ -15,27 +16,21 @@ export default function Sidebar({ isMobileOpen, setIsMobileOpen, isCollapsed, se
       ]
     },
     {
-      title: "Learning",
+      title: "Teaching & Sessions",
       links: [
-        { to: "/browse-courses", label: "Course Purchase", icon: ShoppingCart },
         { to: "/my-courses", label: "My Courses", icon: BookOpen },
-        { to: "/live-classes", label: "Live Classes", icon: Video },
-        { to: "/assessments", label: "Assessments", icon: FileQuestion },
+        { to: "/schedule", label: "Live Schedule", icon: Calendar },
+        { to: "/recordings", label: "Recordings", icon: PlayCircle },
+        { to: "/mentorships", label: "1-to-1 Bookings", icon: CalendarHeart },
+        { to: "/assignments", label: "Assignments", icon: FileQuestion },
       ]
     },
     {
-      title: "Achievements",
+      title: "People & Comms",
       links: [
-        { to: "/certificates", label: "Certificates", icon: Award },
-      ]
-    },
-    {
-      title: "Support & Mentorship",
-      links: [
-        { to: "/live-mentors", label: "Live Teachers", icon: Radio },
-        { to: "/mentorship", label: "Book Mentorship", icon: Users },
-        { to: "/ai-tutor", label: "24/7 AI Tutor", icon: Bot },
-        { to: "/support", label: "Helpdesk", icon: LifeBuoy },
+        { to: "/students", label: "Students", icon: Users },
+        { to: "/messages", label: "Messages", icon: Radio },
+        { to: "/live-support", label: "Live Support", icon: HeadphonesIcon },
       ]
     },
     {
@@ -55,7 +50,7 @@ export default function Sidebar({ isMobileOpen, setIsMobileOpen, isCollapsed, se
       <div className={`flex h-16 shrink-0 items-center border-b border-border ${isCollapsed ? 'justify-center px-0' : 'justify-between px-4'}`}>
         {!isCollapsed && (
           <span className="font-display text-lg font-semibold text-brand-deep truncate ml-2">
-            Student Portal
+            Teacher Portal
           </span>
         )}
         

@@ -27,11 +27,11 @@ export default function Header() {
             height={512}
             className="h-16 w-16 shrink-0"
           />
-          <span className="min-w-0">
-            <span className="block truncate font-display text-base leading-tight font-semibold text-brand-deep sm:text-lg">
+          <span>
+            <span className="block font-display text-base leading-tight font-semibold text-brand-deep sm:text-lg whitespace-nowrap">
               Nawdeep Mahila Sangh
             </span>
-            <span className="block truncate text-[11px] tracking-[0.18em] text-muted-foreground uppercase">
+            <span className="block text-[11px] tracking-[0.18em] text-muted-foreground uppercase whitespace-nowrap">
               Learning Platform
             </span>
           </span>
@@ -49,11 +49,18 @@ export default function Header() {
               {item.label}
             </Link>
           ))}
+          <Link
+            to="/register"
+            className="ml-3 inline-flex items-center gap-2 rounded-full border border-brand/20 bg-background px-5 py-2.5 text-sm font-semibold text-brand-deep shadow-soft transition-colors hover:bg-secondary cursor-pointer"
+          >
+            Register
+          </Link>
           <a
             href="tel:+919431945860"
-            className="ml-3 inline-flex items-center gap-2 rounded-full bg-gradient-brand px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition-transform hover:-translate-y-0.5 cursor-pointer"
+            title="Talk to a Teacher"
+            className="ml-3 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gradient-brand text-primary-foreground shadow-soft transition-transform hover:-translate-y-0.5 cursor-pointer"
           >
-            <Phone className="h-4 w-4" /> Talk to a Teacher
+            <Phone className="h-4 w-4" />
           </a>
         </nav>
 
@@ -81,6 +88,13 @@ export default function Header() {
               {item.label}
             </Link>
           ))}
+          <Link
+            to="/register"
+            onClick={() => setOpen(false)}
+            className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full border border-brand/20 bg-background px-5 py-3 text-sm font-semibold text-brand-deep cursor-pointer"
+          >
+            Register
+          </Link>
           <a
             href="tel:+919431945860"
             className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-brand px-5 py-3 text-sm font-semibold text-primary-foreground cursor-pointer"

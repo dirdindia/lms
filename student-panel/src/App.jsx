@@ -3,6 +3,7 @@ import StudentLayout from "./components/layout/StudentLayout";
 
 // Pages
 import Dashboard from "./pages/Dashboard";
+import BrowseCourses from "./pages/BrowseCourses";
 import MyCourses from "./pages/MyCourses";
 import LiveClasses from "./pages/LiveClasses";
 import Assessments from "./pages/Assessments";
@@ -21,6 +22,7 @@ function App() {
       <Routes>
         <Route path="/" element={<StudentLayout />}>
           <Route index element={<Dashboard />} />
+          <Route path="browse-courses" element={<BrowseCourses />} />
           <Route path="my-courses" element={<MyCourses />} />
           <Route path="live-classes" element={<LiveClasses />} />
           <Route path="assessments" element={<Assessments />} />

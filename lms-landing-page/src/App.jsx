@@ -12,7 +12,7 @@ import AiTutor from './pages/AiTutor'
 import LiveTutoring from './pages/LiveTutoring'
 import StudyMaterial from './pages/StudyMaterial'
 import Contact from './pages/Contact'
-
+import Register from './pages/Register'
 const rootRoute = createRootRoute({
   component: Layout,
 })
@@ -29,6 +29,7 @@ const aiTutorRoute = createRoute({ getParentRoute: () => rootRoute, path: '/ai-t
 const liveTutoringRoute = createRoute({ getParentRoute: () => rootRoute, path: '/live-tutoring', component: LiveTutoring })
 const studyMaterialRoute = createRoute({ getParentRoute: () => rootRoute, path: '/study-material', component: StudyMaterial })
 const contactRoute = createRoute({ getParentRoute: () => rootRoute, path: '/contact', component: Contact })
+const registerRoute = createRoute({ getParentRoute: () => rootRoute, path: '/register', component: Register })
 
 const routeTree = rootRoute.addChildren([
   indexRoute,
@@ -38,6 +39,7 @@ const routeTree = rootRoute.addChildren([
   liveTutoringRoute,
   studyMaterialRoute,
   contactRoute,
+  registerRoute,
 ])
 
 const router = createRouter({ routeTree })
