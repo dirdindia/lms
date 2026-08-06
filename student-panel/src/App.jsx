@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import StudentLayout from "./components/layout/StudentLayout";
 
 // Pages
@@ -14,13 +14,36 @@ import LiveMentors from "./pages/LiveMentors";
 import AITutor from "./pages/AITutor";
 import Support from "./pages/Support";
 
+import Login from "./pages/Login";
+
 // Main App Component
+
+const ProtectedRoute = ({ children }) => {
+  const token = localStorage.getItem('token');
+  const userStr = localStorage.getItem('user');
+  
+  if (!token || !userStr) {
+    return <Navigate to="/login" replace />;
+  }
+
+  try {
+    const user = JSON.parse(userStr);
+    if (user.role !== 'student') {
+      return <Navigate to="/login" replace />;
+    }
+  } catch (e) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return children;
+};
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<StudentLayout />}>
+        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<ProtectedRoute><StudentLayout /></ProtectedRoute>}>
           <Route index element={<Dashboard />} />
           <Route path="browse-courses" element={<BrowseCourses />} />
           <Route path="my-courses" element={<MyCourses />} />

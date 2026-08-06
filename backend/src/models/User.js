@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
   // Common Fields
+  status: { type: String, enum: ['pending', 'approved', 'rejected'], default: 'pending' },
   role: { type: String, enum: ['student', 'teacher', 'admin'], default: 'student' },
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },

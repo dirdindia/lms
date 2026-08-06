@@ -40,7 +40,8 @@ const registerUser = async (req, res) => {
         id: user._id,
         name: user.name,
         email: user.email,
-        role: user.role
+        role: user.role,
+        status: user.status
       }
     });
   } catch (error) {
@@ -88,7 +89,54 @@ const getUsers = async (req, res) => {
   }
 };
 
+// @desc    Get all pending users
+// @route   GET /api/users/pending
+const getPendingUsers = async (req, res) => {
+  try {
+    const pendingUsers = await User.find({ status: 'pending' })
+      .select('-password')
+      .sort({ createdAt: -1 });
+
+    res.status(200).json({
+      success: true,
+      count: pendingUsers.length,
+      data: pendingUsers
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// @desc    Update user status (approve/reject)
+// @route   PUT /api/users/:id/status
+const updateUserStatus = async (req, res) => {
+  try {
+    const { status } = req.body;
+    if (!['approved', 'rejected'].includes(status)) {
+      return res.status(400).json({ message: 'Invalid status' });
+    }
+
+    const user = await User.findById(req.params.id);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    user.status = status;
+    await user.save();
+
+    res.status(200).json({
+      success: true,
+      message: `User status updated to ${status}`,
+      data: user
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   registerUser,
-  getUsers
+  getUsers,
+  getPendingUsers,
+  updateUserStatus
 };
