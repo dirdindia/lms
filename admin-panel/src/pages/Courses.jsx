@@ -1,4 +1,7 @@
+import { useNavigate } from 'react-router-dom';
+
 export default function Courses() {
+  const navigate = useNavigate();
   const courses = [
     { id: 1, title: "Full Stack Web Development", category: "Programming", price: "$99", status: "Published", students: 1240 },
     { id: 2, title: "UI/UX Design Masterclass", category: "Design", price: "$79", status: "Published", students: 850 },
@@ -14,7 +17,7 @@ export default function Courses() {
           <h1 className="font-display text-3xl font-bold tracking-tight text-foreground">Courses</h1>
           <p className="text-muted-foreground mt-2">Manage all your academic courses and content.</p>
         </div>
-        <button className="bg-brand text-primary-foreground px-4 py-2 rounded-lg font-medium hover:bg-brand-deep transition-colors cursor-pointer shadow-sm">
+        <button onClick={() => navigate('/courses/add')} className="bg-brand text-primary-foreground px-4 py-2 rounded-lg font-medium hover:bg-brand-deep transition-colors cursor-pointer shadow-sm">
           + Add Course
         </button>
       </div>

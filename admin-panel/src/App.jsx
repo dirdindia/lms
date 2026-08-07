@@ -8,6 +8,7 @@ import Dashboard from "./pages/Dashboard";
 import Calendar from "./pages/Calendar";
 import Analytics from "./pages/Analytics";
 import Courses from "./pages/Courses";
+import AddCourse from "./pages/AddCourse";
 import LiveClasses from "./pages/LiveClasses";
 import Assessments from "./pages/Assessments";
 import Certificates from "./pages/Certificates";
@@ -54,6 +55,7 @@ function App() {
             <Route path="calendar" element={<Calendar />} />
             <Route path="reports" element={<Analytics />} />
             <Route path="courses" element={<Courses />} />
+            <Route path="courses/add" element={<AddCourse />} />
             <Route path="live-classes" element={<LiveClasses />} />
             <Route path="assessments" element={<Assessments />} />
             <Route path="certificates" element={<Certificates />} />
