@@ -1,9 +1,37 @@
 import PageHero from "@/components/PageHero";
 import { Mail, MapPin, Phone } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import emailjs from "@emailjs/browser";
 
 export default function Contact() {
   const [sent, setSent] = useState(false);
+  const form = useRef(null);
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        form.current,
+        {
+          publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+        }
+      )
+      .then(
+        () => {
+          setSent(true);
+          form.current.reset();
+          // Optional: reset sent status after a few seconds
+          setTimeout(() => setSent(false), 5000);
+        },
+        (error) => {
+          console.log("FAILED...", error.text);
+          alert("Failed to send message. Please try again.");
+        }
+      );
+  };
 
   return (
     <>
@@ -48,10 +76,8 @@ export default function Contact() {
           </div>
 
           <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              setSent(true);
-            }}
+            ref={form}
+            onSubmit={sendEmail}
             className="rounded-2xl border border-border bg-card p-7 shadow-soft"
           >
             <div className="grid gap-5 sm:grid-cols-2">
@@ -59,6 +85,7 @@ export default function Contact() {
                 <span className="font-medium text-foreground">Student name</span>
                 <input
                   required
+                  name="user_name"
                   className="mt-2 w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm outline-none focus:border-brand"
                   placeholder="Your full name"
                 />
@@ -67,6 +94,7 @@ export default function Contact() {
                 <span className="font-medium text-foreground">Mobile number</span>
                 <input
                   required
+                  name="user_mobile"
                   type="tel"
                   className="mt-2 w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm outline-none focus:border-brand"
                   placeholder="10-digit mobile"
@@ -74,7 +102,9 @@ export default function Contact() {
               </label>
               <label className="block text-sm">
                 <span className="font-medium text-foreground">Class</span>
-                <select className="mt-2 w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm outline-none focus:border-brand">
+                <select 
+                  name="user_class"
+                  className="mt-2 w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm outline-none focus:border-brand">
                   <option>Class 9th</option>
                   <option>Class 10th</option>
                   <option>Class 11th</option>
@@ -84,7 +114,9 @@ export default function Contact() {
               </label>
               <label className="block text-sm">
                 <span className="font-medium text-foreground">Preferred language</span>
-                <select className="mt-2 w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm outline-none focus:border-brand">
+                <select 
+                  name="user_language"
+                  className="mt-2 w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm outline-none focus:border-brand">
                   <option>Hindi</option>
                   <option>English</option>
                   <option>Hindi + English</option>
@@ -94,6 +126,7 @@ export default function Contact() {
             <label className="mt-5 block text-sm">
               <span className="font-medium text-foreground">Message</span>
               <textarea
+                name="message"
                 rows={4}
                 className="mt-2 w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm outline-none focus:border-brand"
                 placeholder="Which subject do you need help with?"
