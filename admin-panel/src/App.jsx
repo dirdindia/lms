@@ -20,6 +20,7 @@ import Helpdesk from "./pages/Helpdesk";
 import Payments from "./pages/Payments";
 import Marketing from "./pages/Marketing";
 import Settings from "./pages/Settings";
+import ContactInquiries from "./pages/ContactInquiries";
 
 import Login from "./pages/Login";
 
@@ -66,6 +67,7 @@ function App() {
             <Route path="helpdesk" element={<Helpdesk />} />
             <Route path="payments" element={<Payments />} />
             <Route path="marketing" element={<Marketing />} />
+            <Route path="contact-inquiries" element={<ContactInquiries />} />
             <Route path="settings" element={<Settings />} />
           </Route>
         </Routes>

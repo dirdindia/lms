@@ -3,7 +3,7 @@ import {
   LayoutDashboard, Users, Settings, ChevronLeft, ChevronRight, X, 
   BookOpen, Video, Bot, CreditCard, BarChart3, 
   FileQuestion, Award, MessageSquare, LifeBuoy, Megaphone,
-  Calendar as CalendarIcon, LogOut, ClipboardList
+  Calendar as CalendarIcon, LogOut, ClipboardList, Mail
 } from "lucide-react";
 
 export default function Sidebar({ isMobileOpen, setIsMobileOpen, isCollapsed, setIsCollapsed }) {
@@ -35,6 +35,7 @@ export default function Sidebar({ isMobileOpen, setIsMobileOpen, isCollapsed, se
         { to: "/ai-tutor", label: "AI Tutor", icon: Bot },
         { to: "/community", label: "Community", icon: MessageSquare },
         { to: "/helpdesk", label: "Helpdesk", icon: LifeBuoy },
+        { to: "/contact-inquiries", label: "Contact Us", icon: Mail },
       ]
     },
     {

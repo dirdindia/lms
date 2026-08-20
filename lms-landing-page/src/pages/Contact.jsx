@@ -1,36 +1,33 @@
 import PageHero from "@/components/PageHero";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { useState, useRef } from "react";
-import emailjs from "@emailjs/browser";
+import api from "../utils/api";
 
 export default function Contact() {
   const [sent, setSent] = useState(false);
   const form = useRef(null);
 
-  const sendEmail = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
 
-    emailjs
-      .sendForm(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        form.current,
-        {
-          publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
-        }
-      )
-      .then(
-        () => {
-          setSent(true);
-          form.current.reset();
-          // Optional: reset sent status after a few seconds
-          setTimeout(() => setSent(false), 5000);
-        },
-        (error) => {
-          console.log("FAILED...", error.text);
-          alert("Failed to send message. Please try again.");
-        }
-      );
+    const formData = new FormData(form.current);
+    const data = {
+      name: formData.get('user_name'),
+      mobile: formData.get('user_mobile'),
+      class: formData.get('user_class'),
+      language: formData.get('user_language'),
+      message: formData.get('message')
+    };
+
+    try {
+      await api.post('/contacts', data);
+      setSent(true);
+      form.current.reset();
+      setTimeout(() => setSent(false), 5000);
+    } catch (error) {
+      console.error("FAILED...", error);
+      alert("Failed to send message. Please try again.");
+    }
   };
 
   return (
